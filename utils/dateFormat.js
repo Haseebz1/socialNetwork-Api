@@ -17,7 +17,7 @@ const addDateSuffix = (date) => {
   return dateStr;
 };
 
-export default (
+module.exports = (
   timestamp,
   { monthLength = "short", dateSuffix = true } = {}
 ) => {

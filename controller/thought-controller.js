@@ -12,7 +12,7 @@ const thoughtcontroller = {
   },
   async getsinglethought(req, res) {
     try {
-      const dbthoughtData = await Thought.findOne({ _id: req.pram.Thought });
+      const dbthoughtData = await Thought.findOne({ _id: req.pram.thoughtId });
       if (!dbthoughtData) {
         return res.status(404).json({ message: "no thought with this id" });
       }
@@ -23,5 +23,20 @@ const thoughtcontroller = {
     }
   },
 
+  async createthought(req, res) {
+    try {
+      const dbthoughtData = await Thought.create(req.body);
+      res.json(dbthoughtData);
+    } catch (err) {
+      console.log(err);
+      res.status(500).json(err);
+    }
+  },
+//   async deletethought(req, res) {
+//     try {
+//       const dbthoughtData = await Thought.deleteOne({_id: req.param.Thought});
+//     }
+//   }
 
 };
+module.exports = thoughtcontroller;
