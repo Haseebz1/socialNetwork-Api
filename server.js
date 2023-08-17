@@ -1,7 +1,7 @@
 const express = require ('express');
 const routes = require ('./routes');
 const db = require ('./config/connection');
-const model = require('./models/index');
+
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -19,5 +19,5 @@ app.listen(PORT, () => {
 })
 
 });
-model.sync({force:true});
+
 
