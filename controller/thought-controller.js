@@ -32,6 +32,7 @@ const thoughtcontroller = {
       res.status(500).json(err);
     }
   },
+  
   async deletethought(req, res) {
     try {
       const dbthoughtData = await Thought.deleteOne({_id: req.param.Thought});
