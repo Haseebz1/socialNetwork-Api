@@ -32,11 +32,18 @@ const thoughtcontroller = {
       res.status(500).json(err);
     }
   },
-//   async deletethought(req, res) {
-//     try {
-//       const dbthoughtData = await Thought.deleteOne({_id: req.param.Thought});
-//     }
-//   }
+  async deletethought(req, res) {
+    try {
+      const dbthoughtData = await Thought.deleteOne({_id: req.param.Thought});
+      if (!dbthoughtData) {
+        return res.status(404).json({ message: "no thought with this id" });
+      }
+      res.json(dbthoughtData);
+    } catch (err) {
+      console.log(err);
+      res.status(500).json(err);
+    }
+  },
 
 };
 module.exports = thoughtcontroller;
