@@ -1,4 +1,4 @@
-const { User, thought} = require ("../models");
+const { User, Thought} = require ("../models");
 
 const Usercontroller = { 
     async getUser(req, res) {
@@ -53,7 +53,7 @@ const Usercontroller = {
             }
           },
 
-          async addfriend(req, res) {
+          async addFriend(req, res) {
             try {
               const dbfriendsData = await User.findOneAndUpdate({friends: req.param.friendsId});
               if (!dbfriendsData) {
@@ -65,8 +65,8 @@ const Usercontroller = {
               res.status(500).json(err);
             }
           },
-          
-          async deletefriend(req, res) {
+
+          async deleteFriend(req, res) {
             try {
               const dbfriendsData = await User.findOneAndDelete({friends: req.param.friendsId});
               if (!dbfriendsData) {

@@ -1,4 +1,4 @@
-const { Thoughts, User, Thought } = require("../models");
+const { User, Thought } = require("../models");
 
 const thoughtcontroller = {
   async getthoughts(req, res) {
@@ -10,6 +10,7 @@ const thoughtcontroller = {
       res.status(500).json(err);
     }
   },
+  
   async getsinglethought(req, res) {
     try {
       const dbthoughtData = await Thought.findOne({ _id: req.pram.thoughtId });
@@ -32,7 +33,7 @@ const thoughtcontroller = {
       res.status(500).json(err);
     }
   },
-  
+
   async deletethought(req, res) {
     try {
       const dbthoughtData = await Thought.deleteOne({_id: req.param.Thought});
