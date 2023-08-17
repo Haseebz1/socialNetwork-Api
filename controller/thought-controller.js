@@ -36,7 +36,7 @@ const thoughtcontroller = {
 
   async deletethought(req, res) {
     try {
-      const dbthoughtData = await Thought.deleteOne({_id: req.param.Thought});
+      const dbthoughtData = await Thought.deleteOne({_id: req.param.thoughtId});
       if (!dbthoughtData) {
         return res.status(404).json({ message: "no thought with this id" });
       }
@@ -47,5 +47,44 @@ const thoughtcontroller = {
     }
   },
 
-};
+  async updatethought(req, res) {
+    try {
+      const dbthoughtData = await Thought.findOneAndUpdate({_id: req.param.thoughtId});
+      if (!dbthoughtData) {
+        return res.status(404).json({ message: "no thought with this id" });
+      }
+      res.json(dbthoughtData);
+    } catch (err) {
+      console.log(err);
+      res.status(500).json(err);
+    }
+  },
+
+  async createReaction(req, res) {
+    try {
+      const dbthoughtData = await Thought.findOneAndUpdate({_id: req.param.thoughtId});
+      if (!dbthoughtData) {
+        return res.status(404).json({ message: "no thought with this id" });
+      }
+      res.json(dbthoughtData);
+    } catch (err) {
+      console.log(err);
+      res.status(500).json(err);
+    }
+    }
+
+    async deleteReaction(req, res) {
+      try {
+        const dbthoughtData = await Thought.findOneAndUpdate({_id: req.param.thoughtId});
+        if (!dbthoughtData) {
+          return res.status(404).json({ message: "no thought with this id" });
+        }
+        res.json(dbthoughtData);
+      } catch (err) {
+        console.log(err);
+        res.status(500).json(err);
+      }
+      }
+  };
+
 module.exports = thoughtcontroller;
