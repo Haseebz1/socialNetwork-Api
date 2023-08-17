@@ -29,7 +29,7 @@ const Usercontroller = {
 
           async deleteUser(req, res) {
             try {
-              const dbuserData = await User.deleteOne({_id: req.param.User});
+              const dbuserData = await User.findByIdAndDelete({_id: req.param.User});
               if (!dbuserData) {
                 return res.status(404).json({ message: "no user with this id" });
               }
@@ -46,6 +46,15 @@ const Usercontroller = {
               if (!dbuserData) {
                 return res.status(404).json({ message: "no user with this id" });
               }
+              res.json(dbuserData);
+            } catch (err) {
+              console.log(err);
+              res.status(500).json(err);
+            }
+          },
+          async createUser(req, res) {
+            try {
+              const dbuserData = await User.create(req.body)
               res.json(dbuserData);
             } catch (err) {
               console.log(err);
