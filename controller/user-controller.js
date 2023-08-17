@@ -52,6 +52,32 @@ const Usercontroller = {
               res.status(500).json(err);
             }
           },
+
+          async addfriend(req, res) {
+            try {
+              const dbfriendsData = await User.findOneAndUpdate({friends: req.param.friendsId});
+              if (!dbfriendsData) {
+                return res.status(404).json({ message: "no user with this id" });
+              }
+              res.json(dbfriendsData);
+            } catch (err) {
+              console.log(err);
+              res.status(500).json(err);
+            }
+          },
+          
+          async deletefriend(req, res) {
+            try {
+              const dbfriendsData = await User.findOneAndDelete({friends: req.param.friendsId});
+              if (!dbfriendsData) {
+                return res.status(404).json({ message: "no user with this id" });
+              }
+              res.json(dbfriendsData);
+            } catch (err) {
+              console.log(err);
+              res.status(500).json(err);
+            }
+          },
         }
     
         module.exports = Usercontroller;
