@@ -16,7 +16,7 @@ const Usercontroller = {
 
           async getSingleUser(req, res) {
             try {
-              const dbuserData = await User.findOne({ _id: req.pram.userId });
+              const dbuserData = await User.findOne({ _id: req.prams.userId });
               if (!dbuserData) {
                 return res.status(404).json({ message: "no User with this id" });
               }
@@ -29,7 +29,7 @@ const Usercontroller = {
 
           async deleteUser(req, res) {
             try {
-              const dbuserData = await User.findByIdAndDelete({_id: req.param.User});
+              const dbuserData = await User.findByIdAndDelete({_id: req.params.userId});
               if (!dbuserData) {
                 return res.status(404).json({ message: "no user with this id" });
               }
@@ -42,7 +42,7 @@ const Usercontroller = {
 
           async updateUser(req, res) {
             try {
-              const dbuserData = await User.findOneAndUpdate({_id: req.param.User});
+              const dbuserData = await User.findOneAndUpdate({_id: req.params.userId});
               if (!dbuserData) {
                 return res.status(404).json({ message: "no user with this id" });
               }
@@ -64,7 +64,7 @@ const Usercontroller = {
 
           async addFriend(req, res) {
             try {
-              const dbfriendsData = await User.findOneAndUpdate({friends: req.param.friendsId});
+              const dbfriendsData = await User.findOneAndUpdate({friends: req.params.friendsId});
               if (!dbfriendsData) {
                 return res.status(404).json({ message: "no user with this id" });
               }
@@ -77,7 +77,7 @@ const Usercontroller = {
 
           async deleteFriend(req, res) {
             try {
-              const dbfriendsData = await User.findOneAndDelete({friends: req.param.friendsId});
+              const dbfriendsData = await User.findOneAndDelete({friends: req.params.friendsId});
               if (!dbfriendsData) {
                 return res.status(404).json({ message: "no user with this id" });
               }
