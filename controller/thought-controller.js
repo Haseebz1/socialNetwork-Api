@@ -13,7 +13,7 @@ const thoughtcontroller = {
   
   async getsinglethought(req, res) {
     try {
-      const dbthoughtData = await Thought.findOne({ _id: req.pram.thoughtId });
+      const dbthoughtData = await Thought.findOne({ _id: req.params.thoughtId });
       if (!dbthoughtData) {
         return res.status(404).json({ message: "no thought with this id" });
       }
@@ -36,7 +36,7 @@ const thoughtcontroller = {
 
   async deletethought(req, res) {
     try {
-      const dbthoughtData = await Thought.deleteOne({_id: req.param.thoughtId});
+      const dbthoughtData = await Thought.deleteOne({_id: req.params.thoughtId});
       if (!dbthoughtData) {
         return res.status(404).json({ message: "no thought with this id" });
       }
@@ -49,7 +49,7 @@ const thoughtcontroller = {
 
   async updatethought(req, res) {
     try {
-      const dbthoughtData = await Thought.findOneAndUpdate({_id: req.param.thoughtId});
+      const dbthoughtData = await Thought.findOneAndUpdate({_id: req.params.thoughtId},{ $set: req.body,},{runValidators: true, new: true,});
       if (!dbthoughtData) {
         return res.status(404).json({ message: "no thought with this id" });
       }
@@ -62,7 +62,7 @@ const thoughtcontroller = {
 
   async createReaction(req, res) {
     try {
-      const dbthoughtData = await Thought.findOneAndUpdate({_id: req.param.thoughtId});
+      const dbthoughtData = await Thought.findOneAndUpdate({_id: req.params.thoughtId});
       if (!dbthoughtData) {
         return res.status(404).json({ message: "no thought with this id" });
       }
@@ -75,7 +75,7 @@ const thoughtcontroller = {
 
     async deleteReaction(req, res) {
       try {
-        const dbthoughtData = await Thought.findOneAndUpdate({_id: req.param.thoughtId});
+        const dbthoughtData = await Thought.findOneAndUpdate({_id: req.params.thoughtId});
         if (!dbthoughtData) {
           return res.status(404).json({ message: "no thought with this id" });
         }

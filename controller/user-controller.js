@@ -42,7 +42,7 @@ const Usercontroller = {
 
           async updateUser(req, res) {
             try {
-              const dbuserData = await User.findOneAndUpdate({_id: req.params.userId});
+              const dbuserData = await User.findOneAndUpdate({_id: req.params.userId},{ $set: req.body,},{runValidators: true, new: true,})
               if (!dbuserData) {
                 return res.status(404).json({ message: "no user with this id" });
               }
