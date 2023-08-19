@@ -29,6 +29,13 @@ Mongoose
 Insomnia
 
 ## Test
+Here is video that way i test it in insomnia
+https://drive.google.com/file/d/1sApdsI-mNZObwSptG-mONtz9rUbPpQ11/view
+
+## Links
+
+Github link: https://github.com/Haseebz1/socialNetwork-Api.git
+video link of Insomnia:https://drive.google.com/file/d/1sApdsI-mNZObwSptG-mONtz9rUbPpQ11/view
 
 ## License 
 MIT LICENSE

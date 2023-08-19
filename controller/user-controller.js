@@ -29,7 +29,7 @@ const Usercontroller = {
 
           async deleteUser(req, res) {
             try {
-              const dbuserData = await User.findByIdAndDelete({_id: req.params.userId});
+              const dbuserData = await User.deleteOne({_id: req.params.userId});
               if (!dbuserData) {
                 return res.status(404).json({ message: "no user with this id" });
               }
